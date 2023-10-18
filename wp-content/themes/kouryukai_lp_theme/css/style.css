@@ -1,0 +1,770 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: "Noto_Sans_JP";
+  src: url("../fonts/Noto_Sans_JP/static/NotoSansJP-Regular.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Noto_Sans_JP";
+  src: url("../fonts/Noto_Sans_JP/static/NotoSansJP-SemiBold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Noto_Sans_JP";
+  src: url("../fonts/Noto_Sans_JP/static/NotoSansJP-Bold.ttf");
+  font-weight: 700;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body {
+  color: #f8fbff;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Noto_Sans_JP";
+  font-feature-settings: "palt";
+  letter-spacing: 0.05em;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+button:hover,
+a:hover {
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+}
+
+/* SP優先でコーディング */
+/* header */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+}
+header .header__logo {
+  margin: 0 5%;
+}
+header .header__logo img {
+  height: 36px;
+}
+header .header__right {
+  display: flex;
+  justify-content: end;
+  width: 60%;
+}
+header .header__tell {
+  width: 26%;
+  background: #0051c5;
+}
+header .header__reservation_btn {
+  width: 74%;
+  font-size: max(0.875rem, min(4vw, 1.125rem));
+  font-size: clamp(0.875rem, 40 / 960 * 100vw, 1.125rem);
+  font-weight: 600;
+}
+header .header__tell a,
+header .header__reservation_btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+.header__tell .header__tell--number,
+.header__tell .header__tell--time {
+  display: none;
+}
+
+/* 予約ボタンの実装 */
+header .header__reservation_btn,
+.reservation_btn {
+  background: #000;
+  color: #15dcff;
+}
+header .header__reservation_btn a {
+  /* font-size: 0.875rem; */
+  font-size: clamp(14px, 18 / 960 * 100vw, 18px);
+}
+header .header__reservation_btn a,
+.reservation_btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 0.5rem;
+}
+/* 予約ボタンの矢印 */
+.reservation_btn__arrow {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  line-height: 1;
+  width: 0.625rem;
+  height: 0.625rem;
+  transform: translateX(-25%) rotate(45deg);
+}
+.reservation_btn__arrow::before,
+.reservation_btn__arrow::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.reservation_btn__arrow::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.16em;
+}
+.reservation_btn__arrow::after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0.16em;
+}
+
+/* ファーストビュー */
+.main_view {
+  height: 100vh;
+  background-image: url(../images/fv_back.png);
+  background-position: top center;
+  text-align: center;
+  font-weight: 600;
+}
+.main_view .main_view__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.375rem;
+  height: 100%;
+  padding-top: 3.75rem;
+}
+
+.main_view__block .main_view__block--age {
+  padding: 0 0.5rem;
+  border: 2px solid #f8fbff;
+  font-size: max(1.375rem, min(4vw, 1.625rem));
+  font-size: clamp(1.375rem, 40 / 960 * 100vw, 1.625rem);
+}
+.main_view__block h1 {
+  display: flex;
+  flex-direction: column;
+  font-size: max(3.75rem, min(4vw, 4.375rem));
+  font-size: clamp(3.75rem, 40 / 960 * 100vw, 4.375rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.main_view__block .main_view__block--sub {
+  margin-bottom: 3.125rem;
+  border-bottom: 2px solid #f8fbff;
+  font-size: max(1.14rem, min(4vw, 1.25rem));
+  font-size: clamp(1.14rem, 40 / 960 * 100vw, 1.25rem);
+}
+.reservation_btn {
+  width: 76%;
+  margin: 0 auto;
+  border: 1px solid #15dcff;
+  filter: drop-shadow(0px 0px 4px rgba(21, 220, 255, 0.6));
+  font-size: 1.14rem;
+}
+.reservation_btn a {
+  padding: 1.5rem 0;
+}
+
+/* コンテンツ共有 */
+.container {
+  width: 90%;
+  padding: 60px 0;
+  margin: 0 auto;
+}
+
+/* concept */
+.concept {
+  background-image: url(../images/concept_back.png);
+  text-align: center;
+}
+.concept .concept__text {
+  margin-bottom: 2.5rem;
+}
+.concept h2 {
+  margin-bottom: 0.875rem;
+  font-size: max(1.125rem, min(4vw, 1.375rem));
+  font-size: clamp(1.125rem, 40 / 960 * 100vw, 1.375rem);
+  font-weight: 600;
+}
+.concept h2 span {
+  color: #15dcff;
+  font-size: max(1.375rem, min(4vw, 1.625rem));
+  font-size: clamp(1.375rem, 40 / 960 * 100vw, 1.625rem);
+  font-weight: 600;
+}
+
+/* informationの上下のあしらい */
+.concept__information .information--top_decoration,
+.concept__information .information--bottom_decoration {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: #f8fbff;
+}
+.concept__information .information--top_decoration::before,
+.concept__information .information--top_decoration::after,
+.concept__information .information--bottom_decoration::before,
+.concept__information .information--bottom_decoration::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 40px;
+  background: #f8fbff;
+}
+.concept__information .information--top_decoration::before,
+.concept__information .information--top_decoration::after {
+  top: 0;
+}
+.concept__information .information--bottom_decoration::before,
+.concept__information .information--bottom_decoration::after {
+  bottom: 0;
+}
+.concept__information .information--top_decoration::before,
+.concept__information .information--bottom_decoration::before {
+  left: 0;
+}
+.concept__information .information--top_decoration::after,
+.concept__information .information--bottom_decoration::after {
+  right: 0;
+}
+
+.concept__information dl {
+  margin: 2.5rem 0;
+}
+.concept__information dl div {
+  margin-bottom: 1rem;
+}
+.concept__information dt {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #15dcff;
+}
+.concept__information dt,
+.concept__information dt p:first-child {
+  margin-bottom: 0.125rem;
+}
+.concept__information .information__triangle {
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #15dcff;
+}
+.concept__information dd span {
+  display: block;
+}
+
+/* section共通 */
+.section_title {
+  margin-bottom: 1.875rem;
+  font-size: max(30px, min(4vw, 40px));
+  font-size: clamp(30px, 40 / 960 * 100vw, 40px);
+  text-align: center;
+  filter: drop-shadow(0px 0px 10px rgba(21, 220, 255, 0.7));
+}
+.section_title h3 {
+  font-weight: 700;
+}
+.section_title span {
+  color: #15dcff;
+  font-size: max(34px, min(4vw, 44px));
+  font-size: clamp(34px, 40 / 960 * 100vw, 44px);
+}
+.section_title p {
+  font-size: max(10px, min(4vw, 14px));
+  font-size: clamp(10px, 40 / 960 * 100vw, 14px);
+  font-weight: 600;
+}
+
+/* タイムテーブル */
+.time_table {
+  background-image: url(../images/timetable_back.png);
+  text-align: center;
+}
+.time_table ol {
+  position: relative;
+}
+.time_table ol::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 44px;
+  width: 2px;
+  height: 100%;
+  background: #f8fbff;
+}
+.time_table ol li {
+  position: relative;
+}
+.time_table ol li:nth-child(1),
+.time_table ol li:nth-child(4),
+.time_table ol li:nth-child(7) {
+  height: 60px;
+}
+.time_table ol li:nth-child(2) {
+  height: 55px;
+}
+.time_table ol li:nth-child(3) {
+  height: 45px;
+}
+.time_table ol li:nth-child(5),
+.time_table ol li:nth-child(6) {
+  height: 110px;
+}
+.time_table ol li:nth-child(8) {
+  height: 50px;
+}
+.time_table ol li p span {
+  display: block;
+}
+
+li .description--time {
+  position: absolute;
+  font-size: 0.75rem;
+  line-height: 0;
+}
+li .description--time::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 42px;
+  height: 2px;
+  width: 6px;
+  background: #f8fbff;
+}
+li .description--time:last-child::after {
+  display: none;
+}
+li .description--content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 10px);
+  margin-left: 76px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 18, 44, 0.8),
+    rgba(0, 81, 197, 0.8),
+    rgba(0, 18, 44, 0.8)
+  );
+}
+.time_table__description ol li:nth-child(8) .description--content {
+  height: 100%;
+}
+
+.time_table ol li:nth-child(5) .description--content {
+  flex-direction: column;
+}
+
+/* ワークショップ */
+.work_shop {
+  background: #000;
+  text-align: center;
+}
+.work_shop .container {
+  width: 100%;
+}
+.work_shop .work_shop__all {
+  position: relative;
+  padding-bottom: 234px;
+}
+.work_shop .work_shop__text {
+  position: absolute;
+  width: 90%;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  padding: 22px;
+  background: rgba(0, 0, 0, 0.6);
+}
+.work_shop .work_shop__text .work_shop__text--description {
+  margin-bottom: 16px;
+}
+.work_shop .work_shop__text h4 {
+  margin-bottom: 1rem;
+  color: #15dcff;
+  font-size: max(1rem, min(4vw, 1.375rem));
+  font-size: clamp(1rem, 40 / 960 * 100vw, 1.375rem);
+  font-weight: 600;
+}
+.work_shop .work_shop__text p {
+  text-align: justify;
+}
+.work_shop .work_shop__profile {
+  padding: 10px;
+  border: 1px solid #15dcff;
+}
+.work_shop .work_shop__profile p:first-child {
+  width: 105px;
+  border-bottom: 1px solid #15dcff;
+}
+.work_shop .work_shop__profile p span,
+.work_shop .work_shop__profile .profile__detail {
+  font-size: 0.75rem;
+}
+.work_shop .work_shop__profile p span {
+  margin-right: 8px;
+}
+
+.voice {
+  background-image: url(../images/voice_back.png);
+}
+.voice .voice__list--card {
+  margin-bottom: 30px;
+}
+.voice__list--card img {
+  width: 100%;
+}
+.voice__list--card .list--card__text {
+  padding: 24px 20px;
+  color: #000;
+  background: #f8fbff;
+  text-align: justify;
+}
+.voice__list--card .list--card__text {
+  padding: 24px 20px;
+  color: #000;
+  background: #f8fbff;
+  text-align: justify;
+}
+.voice__list--card .list--card__text h4,
+.voice__list--card .list--card__text p {
+  margin-bottom: 16px;
+}
+.voice__list--card .list--card__text h4 {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.voice__list--card .list--card__text h4 + p + p {
+  text-align: right;
+}
+.voice__list--card .list--card__text h4 + p + p::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 120px;
+  margin-left: auto;
+  background: #000;
+}
+
+.form {
+  background-image: url(../images/form_back.png);
+  background-position: right;
+  text-align: center;
+}
+.form .container {
+  width: 100%;
+}
+.form .form__question {
+  margin-bottom: 20px;
+}
+.form .reservation_btn {
+  margin-bottom: 16px;
+}
+.form .form__tell {
+  position: relative;
+  width: 76%;
+  margin: 0 auto;
+  padding: 6px 0;
+  border: 1px solid #f8fbff;
+}
+.form .form__tell--text {
+  font-size: 0.75rem;
+}
+.form .form__tell--img {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+.form .form__tell--img img {
+  width: 18.66px;
+}
+.form .form__tell--time {
+  font-size: 0.5rem;
+}
+
+/* footer */
+footer {
+  padding-bottom: 60px;
+  background: #000;
+  text-align: center;
+}
+footer .container {
+  padding: 60px 0 0 0;
+}
+footer .footer__logo {
+  margin-bottom: 24px;
+}
+footer .footer__text p:first-child {
+  margin-bottom: 16px;
+}
+footer .footer__text address {
+  margin-bottom: 22px;
+  font-size: 0.625rem;
+}
+footer .footer__text address p:not(:last-child) {
+  margin-bottom: 8px;
+}
+footer .footer__text .footer__icon {
+  margin-bottom: 24px;
+}
+footer .footer__text .footer__icon a:first-child {
+  margin-right: 10px;
+}
+footer .footer__copyright {
+  font-size: 0.5rem;
+}
+footer .footer__copyright p:first-child {
+  margin-bottom: 4px;
+}
+
+@media screen and (max-width: 959px) {
+  body {
+    font-size: 14px;
+  }
+  .form .form__tell--number {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  header .header__right {
+    width: 41.67%;
+  }
+  .header__tell .header__tell--number,
+  .header__tell .header__tell--time {
+    display: block;
+  }
+  .header__tell .header__tell--time {
+    margin-bottom: 2px;
+    font-size: 0.75rem;
+  }
+  header .header__tell--all {
+    display: grid;
+    grid-template-columns: 17px 1fr;
+  }
+  header .header__reservation_btn,
+  header .header__tell {
+    width: 50%;
+  }
+  header .header__tell a,
+  header .header__reservation_btn a {
+    height: 80px;
+  }
+  header .header__tell--time {
+    font-size: 0.75rem;
+  }
+  .header__tell--number {
+    font-size: 1.375rem;
+    line-height: 1;
+  }
+
+  /* ファーストビュー */
+
+  .main_view__block h1 {
+    flex-direction: row;
+  }
+  .reservation_btn {
+    font-size: 1.75rem;
+  }
+  .reservation_btn a {
+    gap: 48px;
+    padding: 30px 0;
+  }
+  .reservation_btn .reservation_btn__arrow {
+    width: 17px;
+    height: 17px;
+  }
+
+  .container {
+    padding: 70px 0;
+  }
+
+  /* concept */
+
+  .concept__information dl div {
+    margin-bottom: 30px;
+  }
+  .concept__information dl div:last-child {
+    margin-bottom: 0;
+  }
+  .concept__information dl div,
+  .concept__information dt {
+    display: flex;
+    gap: 46px;
+    text-align: left;
+  }
+  .concept__information dl {
+    margin: 40px 158px;
+  }
+  .concept__information dt,
+  .concept__information dt p:first-child {
+    margin-bottom: 0;
+  }
+  .concept__information dt {
+    align-items: center;
+  }
+  .concept__information dt p:first-child {
+    width: 70px;
+  }
+  .concept__information .information__triangle {
+    transform: rotate(-90deg);
+  }
+  .concept__information dd span {
+    display: inline;
+  }
+
+  /* time_table */
+  .time_table .time_table__description {
+    width: 470px;
+    margin: 0 auto;
+  }
+  li .description--time {
+    font-size: 1rem;
+  }
+  .time_table ol::after {
+    left: 54px;
+  }
+  li .description--time::after {
+    left: 52px;
+  }
+  li .description--content {
+    margin-left: 104px;
+  }
+
+  /* ワークショップ */
+  .work_shop .work_shop__all {
+    display: flex;
+    align-items: end;
+    gap: 50px;
+  }
+  .work_shop .work_shop__text {
+    position: static;
+    transform: none;
+    -webkit-transform: none;
+    padding: 0;
+    margin-right: 80px;
+  }
+  .work_shop .work_shop__text h4 {
+    text-align: left;
+  }
+  .work_shop .work_shop__profile p:first-child {
+    width: 120px;
+  }
+  .work_shop .work_shop__profile p span,
+  .work_shop .work_shop__profile .profile__detail {
+    font-size: 0.875rem;
+  }
+  .work_shop .work_shop__all {
+    padding: 0;
+  }
+
+  /* voice */
+  .voice .voice__list {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+  .voice .voice__list--card {
+    width: calc(100% - 32px);
+  }
+  .voice .voice__list--card:nth-child(2) {
+    margin-top: 50px;
+  }
+  .voice .voice__list--card:nth-child(3) {
+    margin-top: 100px;
+  }
+  .voice__list--card .list--card__text h4 + p + p::after {
+    width: 130px;
+  }
+
+  /* form */
+  .form .container {
+    padding: 100px 0;
+  }
+  .form .form__tell {
+    border: none;
+  }
+  .form .form__tell--text {
+    font-size: 1rem;
+  }
+  .form .form__tell--number {
+    font-size: 1.75rem;
+  }
+  .form .form__tell--time {
+    font-size: 0.75rem;
+  }
+  .form .form__tell--img {
+    left: 32%;
+  }
+  .form .form__tell--img img {
+    width: 28.96px;
+  }
+
+  /* footer */
+  footer {
+    padding-bottom: 10px;
+    text-align: left;
+  }
+  footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 128px;
+  }
+  footer .footer__text p:first-child {
+    font-size: 1.125rem;
+  }
+  footer .footer__text address p {
+    font-size: 1rem;
+  }
+  footer .footer__text .footer__icon a:first-child {
+    margin-right: 14px;
+  }
+  footer .footer__copyright {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+  }
+}
