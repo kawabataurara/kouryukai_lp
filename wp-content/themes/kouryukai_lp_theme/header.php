@@ -1,59 +1,35 @@
-<?php
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package kouryukai_lp_theme
- */
-
-?>
-<!doctype html>
-<html <?php language_attributes(); ?>>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-
-	<?php wp_head(); ?>
+  <?php wp_head(); ?>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="description">
+  <link href="<?php echo get_template_directory_uri(); ?>/css/reset.css" rel="stylesheet">
+  <link href="<?php echo get_template_directory_uri(); ?>/css/style.css" rel="stylesheet">
+  <link href="<?php echo get_template_directory_uri(); ?>/images/icon.ico" rel="icon">
+  <title></title>
 </head>
-
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'kouryukai_lp_theme' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$kouryukai_lp_theme_description = get_bloginfo( 'description', 'display' );
-			if ( $kouryukai_lp_theme_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $kouryukai_lp_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kouryukai_lp_theme' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+  <div class="wrapper js-fadeIn">
+    <header id="js-header">
+      <div class="header__logo">
+        <a href="#top"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="株式会社JIM" loading="lazy"></a>
+      </div>
+      <div class="header__right">
+        <div class="header__tell">
+          <a href="tel:265-622-4649">
+            <div class="header__tell--all">
+              <p></p>
+              <p class="header__tell--time">平日9&#58;00&#12316;21&#58;00</p>
+              <p class="header__tel--icon"><img src="<?php echo get_template_directory_uri(); ?>/images/tell.svg" alt="電話" loading="lazy"></p>
+              <p class="header__tell--number">265&#45;622&#45;4649</p>
+            </div>
+          </a>
+        </div>
+        <div class="header__reservation_btn">
+          <a href="">ご予約はこちら<span class="reservation_btn__arrow"></span></a>
+        </div>
+      </div>
+    </header>

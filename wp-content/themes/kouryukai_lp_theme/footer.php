@@ -1,34 +1,27 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package kouryukai_lp_theme
- */
-
-?>
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'kouryukai_lp_theme' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'kouryukai_lp_theme' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'kouryukai_lp_theme' ), 'kouryukai_lp_theme', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
-<?php wp_footer(); ?>
-
-</body>
+    <footer>
+      <div class="container js-fadeIn">
+      <div class="footer__logo">
+        <a href=""><img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="株式会社JIM" loading="lazy"></a>
+      </div>
+      <div class="footer__text">
+        <p class="company_name">株式会社JIM</p>
+        <address>
+        <p>〒347-4747</p>
+        <p>東京都渋谷区符町4-5 渋谷Pueビル 12F</p>
+        <p>TEL : 265-622-4649</p>
+        </address>
+        <div class="footer__icon">
+        <a href="" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/instagram_logo.svg" alt="インスタグラムのアイコン" loading="lazy"></a>
+        <a href="" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/twitter_logo.svg" alt="ツイッターのアイコン" loading="lazy"></a>
+        </div>
+      </div>
+      </div>
+      <div class="footer__copyright">
+        <p>&#169;jyaga-and-imo-company</p>
+        <p><a href="" target="_blank">プライバシーポリシー</a></p>
+      </div>
+    </footer>
+    <?php wp_footer() ?>
+    </div>
+  </body>
 </html>
